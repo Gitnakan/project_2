@@ -1,0 +1,33 @@
+import random
+
+def roll_dice():
+    return random.randint(1, 6), random.randint(1, 6)
+
+def craps():
+    print("Let's roll!")
+
+    dice1, dice2 = roll_dice()
+    total = dice1 + dice2
+
+    print(f"You rolled: {dice1} + {dice2} = {total}")
+
+    if total == 7 or total == 11:
+        print("Congratulations! You win!")
+    elif total == 2 or total == 3 or total == 12:
+        print("Sorry, you lose!")
+    else:
+        print(f"Your goal is {total}. Roll again to match your goal or roll a 7 to lose.")
+
+        while True:
+            dice1, dice2 = roll_dice()
+            new_total = dice1 + dice2
+            print(f"You rolled: {dice1} + {dice2} = {new_total}")
+
+            if new_total == total:
+                print("Congratulations! You rolled your goal. You win!")
+                break
+            elif new_total == 7:
+                print("Sorry, you rolled a 7. You lose!")
+                break
+
+craps()
